@@ -5,15 +5,22 @@ const path = require('path');
 const static = require('koa-static');
 const session = require('koa-session');
 const bodyParser = require('koa-bodyparser');
+const sd = require('silly-datetime');
+const jsonp = require('koa-jsonp')
 const app = new Koa();
 
 //配置模板引擎
 render(app, {
     root: path.join(__dirname, 'views'),
     extname: '.html',
-    debug: process.env.NODE_ENV !== 'production'
+    debug: process.env.NODE_ENV !== 'production',
+    dateFormat:dateFormat=function(value){
+        //设置日期格式
+        return sd.format(new Date(value), 'YYYY-MM-DD HH:mm');
+    } /*扩展模板里面的方法*/
 });
 
+app.use(jsonp())
 //配置静态资源中间件
 app.use(static(__dirname + '/public'));
 

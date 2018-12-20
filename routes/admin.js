@@ -25,15 +25,17 @@ router.use(async (ctx, next) => {
     }
 });
 
+const index = require('./admin/index');
 const login = require('./admin/login');
 const user = require('./admin/user');
 const manage = require('./admin/manage');
 
 
-router.get('/', async ctx => {
-    ctx.render('admin/index')
-});
+// router.get('/', async ctx => {
+//     ctx.render('admin/index')
+// });
 
+router.use(index);
 router.use('/login', login);
 router.use('/user', user);
 router.use('/manage', manage);

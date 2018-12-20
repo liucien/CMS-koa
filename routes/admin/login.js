@@ -16,8 +16,15 @@ router.post('/doLogin', async ctx => {
         let result = await DB.find('admin', {userName: userName, password: tools.md5(password)});
 
         if (result) {
+
             ctx.session.userinfo = result[0];
+            //用户最后登陆时间
+            await DB.update('admin',{_id:DB.getObjectId(result[0]._id)},{
+                last_time:new Date()
+            });
+
             ctx.redirect(ctx.state.__HOST__ + '/admin')
+
         } else {
             ctx.render('admin/error', {
                 message: '用户名或密码错误',
