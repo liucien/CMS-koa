@@ -50,4 +50,9 @@ router.get('/code', async ctx => {
 
     ctx.body = captcha.data;
 });
+
+router.get('/loginOut', async ctx => {
+    ctx.session.userinfo = null;
+    ctx.redirect(ctx.state.__HOST__ + '/admin/login')
+});
 module.exports = router.routes();
