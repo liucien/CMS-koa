@@ -29,6 +29,7 @@ const index = require('./admin/index');
 const login = require('./admin/login');
 const user = require('./admin/user');
 const manage = require('./admin/manage');
+const articlecate = require('./admin/articlecate');
 
 
 // router.get('/', async ctx => {
@@ -39,5 +40,6 @@ router.use(index);
 router.use('/login', login);
 router.use('/user', user);
 router.use('/manage', manage);
+router.use('/articlecate', articlecate);
 
 module.exports = router.routes();
