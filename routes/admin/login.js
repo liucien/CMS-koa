@@ -9,13 +9,12 @@ router.get('/', async ctx => {
 });
 
 router.post('/doLogin', async ctx => {
-    let userName = ctx.request.body.userName;
+    let username = ctx.request.body.username;
     let password = ctx.request.body.password;
     let code = ctx.request.body.code;
     if (code.toLocaleLowerCase() === ctx.session.code.toLocaleLowerCase()) {
-        let result = await DB.find('admin', {userName: userName, password: tools.md5(password)});
-
-        if (result) {
+        let result = await DB.find('admin', {username: username, password: tools.md5(password)});
+        if (result.length) {
 
             ctx.session.userinfo = result[0];
             //用户最后登陆时间

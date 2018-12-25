@@ -1,12 +1,11 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-	{{include 'admin/public/header.html'}}
+﻿{{include 'admin/public/header.html'}}
 
 	<body>
 		<div class="navbar navbar-default" id="navbar">
 			<script type="text/javascript">
 				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
 			</script>
+
 			{{include 'admin/public/nav_top.html'}}
 		</div>
 
@@ -20,51 +19,9 @@
 					<span class="menu-text"></span>
 				</a>
 
-				<div class="sidebar" id="sidebar">
-					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-					</script>
+				<!--左侧导航-->
 
-					<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-						<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-							<button class="btn btn-success">
-								<i class="icon-signal"></i>
-							</button>
-
-							<button class="btn btn-info">
-								<i class="icon-pencil"></i>
-							</button>
-
-							<button class="btn btn-warning">
-								<i class="icon-group"></i>
-							</button>
-
-							<button class="btn btn-danger">
-								<i class="icon-cogs"></i>
-							</button>
-						</div>
-
-						<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-							<span class="btn btn-success"></span>
-
-							<span class="btn btn-info"></span>
-
-							<span class="btn btn-warning"></span>
-
-							<span class="btn btn-danger"></span>
-						</div>
-					</div><!-- #sidebar-shortcuts -->
-
-					{{include 'admin/public/nav_left.html'}}
-
-					<div class="sidebar-collapse" id="sidebar-collapse">
-						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
-					</div>
-
-					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-					</script>
-				</div>
+				{{include 'admin/public/nav_left.html'}}
 
 				<div class="main-content">
 					<div class="breadcrumbs" id="breadcrumbs">
@@ -94,7 +51,7 @@
 
 						<div class="page-header">
 							<h1>
-								列表
+								列表								
 							</h1>
 						</div><!-- /.page-header -->
 
@@ -150,7 +107,7 @@
 
 										<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group center">
-
+												
 
 												<button class="btn btn-xs btn-info">
 													<i class="icon-edit bigger-120"></i>
@@ -188,7 +145,7 @@
 
 										<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group center">
-
+												
 
 												<button class="btn btn-xs btn-info">
 													<i class="icon-edit bigger-120"></i>
@@ -227,7 +184,7 @@
 
 										<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group center">
-
+												
 
 												<button class="btn btn-xs btn-info">
 													<i class="icon-edit bigger-120"></i>
@@ -249,7 +206,7 @@
 
 					</div>
 				</div><!-- /.main-content -->
-
+			
 			</div><!-- /.main-container-inner -->
 
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
@@ -257,7 +214,9 @@
 			</a>
 		</div><!-- /.main-container -->
 
-		{{include 'admin/public/footer'}}
+
+
+	{{include 'admin/public/footer.html'}}
 
 		<script type="text/javascript">
 			jQuery(function($) {

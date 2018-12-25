@@ -13,10 +13,10 @@
 
             <li class="light-blue">
                 <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <img class="nav-user-photo" src="{{__ROOT__}}/admin/avatars/user.jpg" alt="Jason's Photo" />
-                    <span class="user-info">
+                    <img class="nav-user-photo" src="{{__HOST__}}/admin/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
 									<small>欢迎光临,</small>
-									{{G.userinfo.userName}}
+									{{G.userinfo.username}}
 								</span>
 
                     <i class="icon-caret-down"></i>
@@ -30,17 +30,10 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#">
-                            <i class="icon-user"></i>
-                            个人资料
-                        </a>
-                    </li>
-
                     <li class="divider"></li>
 
                     <li>
-                        <a href="{{__ROOT__}}/admin/login/loginOut">
+                        <a href="{{__HOST__}}/admin/login/loginOut">
                             <i class="icon-off"></i>
                             退出
                         </a>
