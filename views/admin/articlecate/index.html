@@ -76,7 +76,7 @@
                             <th class="left">分类名称</th>
 
 
-                            <th class="center">状态</th>
+                            <th class="center" width="80px;">状态</th>
 
                             <th width="100px;" class="center">操作</th>
                         </tr>
@@ -92,13 +92,13 @@
                                 {{$value.title}}
                             </td>
 
-                            <td class="hidden-480">
+                            <td class="center">
                                 {{if $value.status==1}}
                                 <img src="{{__HOST__}}/admin/images/yes.gif"
-                                     onclick="app.toggle(this,'admin','status','{{@$value._id}}')"/>
+                                     onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')"/>
                                 {{else}}
                                 <img src="{{__HOST__}}/admin/images/no.gif"
-                                     onclick="app.toggle(this,'admin','status','{{@$value._id}}')"/>
+                                     onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')"/>
                                 {{/if}}
                             </td>
 
@@ -136,13 +136,13 @@
                                 -----{{$value.title}}
                             </td>
 
-                            <td class="hidden-480">
+                            <td class="center">
                                 {{if $value.status==1}}
                                 <img src="{{__HOST__}}/admin/images/yes.gif"
-                                     onclick="app.toggle(this,'admin','status','{{@$value._id}}')"/>
+                                     onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')"/>
                                 {{else}}
                                 <img src="{{__HOST__}}/admin/images/no.gif"
-                                     onclick="app.toggle(this,'admin','status','{{@$value._id}}')"/>
+                                     onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')"/>
                                 {{/if}}
                             </td>
 
