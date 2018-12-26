@@ -69,6 +69,7 @@
             </ul>
         </li>
 
+
         <li {{if G.url[1]=="articlecate"}} class="active open" {{/if}}>
         <a href="#" class="dropdown-toggle">
             <i class="icon-user-md"></i>
@@ -76,7 +77,6 @@
 
             <b class="arrow icon-angle-down"></b>
         </a>
-
         <ul class="submenu">
             <li {{if !G.url[2]}} class="active" {{/if}}>
             <a href="{{__ROOT_}}/admin/articlecate">
@@ -91,28 +91,24 @@
             </a>
             </li>
 
-
         </ul>
         </li>
 
-        <li>
+        <li  {{if G.url[1]=="article"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-edit"></i>
                 <span class="menu-text"> 内容管理 </span>
-
                 <b class="arrow icon-angle-down"></b>
             </a>
-
             <ul class="submenu">
-                <li>
-                    <a href="form-elements.html">
+                <li  {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__ROOT_}}/admin/article">
                         <i class="icon-double-angle-right"></i>
                         内容列表
                     </a>
                 </li>
-
-                <li>
-                    <a href="form-wizard.html">
+                <li  {{if G.url[2]=="add"}} class="active" {{/if}}>
+                    <a href="{{__ROOT_}}/admin/article/add">
                         <i class="icon-double-angle-right"></i>
                         增加内容
                     </a>

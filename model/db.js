@@ -1,4 +1,4 @@
-const MongoDB=require('mongodb');
+const MongoDB = require('mongodb');
 const MongoClient = MongoDB.MongoClient;
 const ObjectID = MongoDB.ObjectID;
 const Config = require('./config.js');
@@ -37,10 +37,30 @@ class Db {
         })
     }
 
-    find(collectionName, json) {
+    find(collectionName, json1, json2, json3) {
+        let attr = {}, slipNum = 0, pageSize = 0, page = 1;
+        if (arguments.length === 2) {
+            attr = {};
+            slipNum = 0;
+            pageSize = 0;
+        } else if (arguments.length === 3) {
+            attr = json2;
+            slipNum = 0;
+            pageSize = 0;
+        } else if (arguments.length === 4) {
+            attr = json2;
+            page = json3.page || 1;
+            pageSize = json3.pageSize || 20;
+            slipNum = (page - 1) * pageSize;
+        } else {
+            console.log('传入参数错误')
+        }
+
         return new Promise((resolve, reject) => {
             this.connect().then(db => {
-                let result = db.collection(collectionName).find(json);
+                // let result = db.collection(collectionName).find(json);
+                let result = db.collection(collectionName).find(json1, {fields: attr}).skip(slipNum).limit(pageSize);
+
                 result.toArray((err, docs) => {
                     if (err) {
                         reject(err)
@@ -52,15 +72,15 @@ class Db {
         })
     }
 
-    update(collectionName,json1,json2) {
+    update(collectionName, json1, json2) {
         return new Promise((resolve, reject) => {
             this.connect().then(db => {
-                db.collection(collectionName).updateOne(json1,{
-                    $set:json2
-                },(err,result) => {
-                    if(err) {
+                db.collection(collectionName).updateOne(json1, {
+                    $set: json2
+                }, (err, result) => {
+                    if (err) {
                         reject(err)
-                    }else{
+                    } else {
                         resolve(result)
                     }
                 })
@@ -71,10 +91,10 @@ class Db {
     insert(collectionName, json) {
         return new Promise((resolve, reject) => {
             this.connect().then(db => {
-                db.collection(collectionName).insertOne(json, (err,result) => {
-                    if(err) {
+                db.collection(collectionName).insertOne(json, (err, result) => {
+                    if (err) {
                         reject(err)
-                    }else{
+                    } else {
                         resolve(result)
                     }
                 })
@@ -85,10 +105,10 @@ class Db {
     remove(collectionName, json) {
         return new Promise((resolve, reject) => {
             this.connect().then(db => {
-                db.collection(collectionName).removeOne(json, (err,result) => {
-                    if(err) {
+                db.collection(collectionName).removeOne(json, (err, result) => {
+                    if (err) {
                         reject(err)
-                    }else{
+                    } else {
                         resolve(result)
                     }
                 })
@@ -96,8 +116,20 @@ class Db {
         })
     }
 
-    getObjectId(id){
+    getObjectId(id) {
         return new ObjectID(id)
+    }
+
+    //统计数量的方法
+    count(collectionName, json) {
+        return new Promise((resolve, reject) => {
+            this.connect().then(db => {
+                let result = db.collection(collectionName).count(json);
+                result.then(count => {
+                    resolve(count)
+                })
+            })
+        })
     }
 }
 
