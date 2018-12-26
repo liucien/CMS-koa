@@ -62,8 +62,4 @@ router.post('/doEdit', async ctx => {
 });
 
 
-router.get('/delete', async ctx => {
-    ctx.body = '删除用户'
-});
-
 module.exports = router.routes();

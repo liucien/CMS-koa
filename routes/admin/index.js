@@ -38,4 +38,17 @@ router.get('/changeStatus', async ctx => {
     }
 });
 
+router.get('/remove', async ctx => {
+    /*数据库*/
+    try{
+        let collection = ctx.query.collection;
+        /*删除的 id*/
+        let id = ctx.query.id;
+        let data = await DB.remove(collection, {"_id": DB.getObjectId(id)});
+        ctx.redirect(ctx.state.G.prevPage)
+    }catch (err) {
+        ctx.redirect(ctx.state.G.prevPage)
+    }
+});
+
 module.exports = router.routes();
