@@ -1,3 +1,7 @@
 .form-horizontal .form-group{
     height: 44px;
 }
+.sort_input{
+    width: 44px;
+    text-align: center;
+}

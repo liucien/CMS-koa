@@ -5,6 +5,7 @@ router.get('/', async ctx => {
     ctx.render('admin/index')
 });
 
+//改变状态
 router.get('/changeStatus', async ctx => {
     /*数据库*/
     let collectionName = ctx.query.collectionName;
@@ -38,15 +39,36 @@ router.get('/changeStatus', async ctx => {
     }
 });
 
+//改变排序
+router.get('/changeSort', async ctx => {
+    /*数据库*/
+    let collectionName = ctx.query.collectionName;
+    /*属性*/
+    let id = ctx.query.id;
+    /*更新的 sortValue*/
+    let sortValue = ctx.query.sortValue;
+    let json = {
+        sort: sortValue
+    };
+    let updateResult = await DB.update(collectionName, {"_id": DB.getObjectId(id)}, json);
+
+    if (updateResult) {
+        ctx.body = {"message": '更新成功', "success": true};
+    } else {
+        ctx.body = {"message": "更新失败", "success": false}
+    }
+
+});
+
 router.get('/remove', async ctx => {
     /*数据库*/
-    try{
+    try {
         let collection = ctx.query.collection;
         /*删除的 id*/
         let id = ctx.query.id;
         let data = await DB.remove(collection, {"_id": DB.getObjectId(id)});
         ctx.redirect(ctx.state.G.prevPage)
-    }catch (err) {
+    } catch (err) {
         ctx.redirect(ctx.state.G.prevPage)
     }
 });

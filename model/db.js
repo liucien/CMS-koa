@@ -38,7 +38,8 @@ class Db {
     }
 
     find(collectionName, json1, json2, json3) {
-        let attr = {}, slipNum = 0, pageSize = 0, page = 1;
+        let attr = {}, slipNum = 0, pageSize = 0, page = 1, sortJson = {};
+
         if (arguments.length === 2) {
             attr = {};
             slipNum = 0;
@@ -52,6 +53,9 @@ class Db {
             page = json3.page || 1;
             pageSize = json3.pageSize || 20;
             slipNum = (page - 1) * pageSize;
+            if (json3.sortJson) {
+                sortJson = json3.sortJson
+            }
         } else {
             console.log('传入参数错误')
         }
@@ -59,7 +63,7 @@ class Db {
         return new Promise((resolve, reject) => {
             this.connect().then(db => {
                 // let result = db.collection(collectionName).find(json);
-                let result = db.collection(collectionName).find(json1, {fields: attr}).skip(slipNum).limit(pageSize);
+                let result = db.collection(collectionName).find(json1, {fields: attr}).skip(slipNum).limit(pageSize).sort(sortJson);
 
                 result.toArray((err, docs) => {
                     if (err) {

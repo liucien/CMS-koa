@@ -20,7 +20,7 @@ router.get('/', async ctx => {
     let page = ctx.query.page || 1;
     let pageSize = 3;
     let result = await DB.find('article', {}, {}, {
-        page, pageSize
+        page, pageSize,sortJson:{add_time:-1}
     });
     let count = await DB.count('article', {});
 
@@ -61,11 +61,11 @@ router.post('/doAdd', upload.single('img_url'), async ctx => {
     let keywords=ctx.req.body.keywords;
     let description=ctx.req.body.description || '';
     let content=ctx.req.body.content ||'';
-    let img_url=ctx.req.file? ctx.req.file.path :'';
-
+    let img_url=ctx.req.file? ctx.req.file.path.substr(7) :'';
+    let add_time = tools.getTime();
     //属性的简写
     let json={
-        pid,catename,title,author,status,is_best,is_hot,is_new,keywords,description,content,img_url
+        pid,catename,title,author,status,is_best,is_hot,is_new,keywords,description,content,img_url,add_time
     };
 
     let result=DB.insert('article',json);
@@ -100,8 +100,8 @@ router.post('/doEdit',upload.single('img_url'), async ctx => {
     let keywords=ctx.req.body.keywords;
     let description=ctx.req.body.description || '';
     let content=ctx.req.body.content ||'';
-
-    let img_url=ctx.req.file? ctx.req.file.path :'';
+    let add_time = tools.getTime();
+    let img_url=ctx.req.file? ctx.req.file.path.substr(7) :'';
 
     //属性的简写
     //注意是否修改了图片          var           let块作用域

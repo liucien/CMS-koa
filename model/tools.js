@@ -23,6 +23,9 @@ let tools = {
         }
         return firstArr;
 
+    },
+    getTime(){
+        return new Date();
     }
 };
 
