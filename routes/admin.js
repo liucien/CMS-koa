@@ -45,4 +45,11 @@ router.use('/manage', manage);
 router.use('/articlecate', articlecate);
 router.use('/article', article);
 
+
+//配置富文本编辑器
+const ueditor = require('koa2-ueditor');
+router.all('/editorUpload', ueditor(['public', {
+    imageAllowFiles: [".png", ".jpg", ".jpeg"],
+    imagePathFormat: "/upload/ueditor/image/{yyyy}{mm}{dd}/{filename}"
+}]));
 module.exports = router.routes();
