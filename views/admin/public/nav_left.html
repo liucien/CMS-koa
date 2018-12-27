@@ -1,4 +1,3 @@
-<script src="../../../../../BaiduNetdiskDownload/02Koa2+Nodejs+MongoDb打造企业级CMS前后端项目实战 （61讲）/40 Koa Cms轮播图的列表制作以及轮播图分页/cms_demo轮播图列表/routes/admin/focus.js"></script>
 <div class="sidebar" id="sidebar">
     <script type="text/javascript">
         try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -149,7 +148,7 @@
             </ul>
         </li>
 
-        <li>
+        <li {{if G.url[1]=="link"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-paperclip"></i>
 
@@ -162,15 +161,15 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="#">
+                <li  {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__ROOT_}}/admin/link">
                         <i class="icon-double-angle-right"></i>
                         友情链接列表
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
+                <li  {{if G.url[2]=="add"}} class="active" {{/if}}>
+                    <a href="{{__ROOT_}}/admin/link/add">
                         <i class="icon-double-angle-right"></i>
                         增加友情链接
                     </a>
