@@ -32,6 +32,7 @@ const user = require('./admin/user');
 const manage = require('./admin/manage');
 const articlecate = require('./admin/articlecate');
 const article = require('./admin/article');
+const focus = require('./admin/focus');
 
 
 // router.get('/', async ctx => {
@@ -44,6 +45,7 @@ router.use('/user', user);
 router.use('/manage', manage);
 router.use('/articlecate', articlecate);
 router.use('/article', article);
+router.use('/focus', focus);
 
 
 //配置富文本编辑器

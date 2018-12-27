@@ -1,3 +1,4 @@
+<script src="../../../../../BaiduNetdiskDownload/02Koa2+Nodejs+MongoDb打造企业级CMS前后端项目实战 （61讲）/40 Koa Cms轮播图的列表制作以及轮播图分页/cms_demo轮播图列表/routes/admin/focus.js"></script>
 <div class="sidebar" id="sidebar">
     <script type="text/javascript">
         try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -122,7 +123,7 @@
 
 
 
-        <li>
+        <li {{if G.url[1]=="focus"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-picture"></i>
                 <span class="menu-text"> 轮播图管理 </span>
@@ -131,20 +132,19 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="#">
+                <li  {{if !G.url[2]}} class="active" {{/if}}>
+                <a href="{{__ROOT_}}/admin/focus">
                         <i class="icon-double-angle-right"></i>
                         轮播图列表
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
+                <li  {{if G.url[2]=="add"}} class="active" {{/if}}>
+                <a href="{{__ROOT_}}/admin/focus/add">
                         <i class="icon-double-angle-right"></i>
                         增加轮播图
                     </a>
                 </li>
-
 
             </ul>
         </li>
