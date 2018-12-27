@@ -179,7 +179,7 @@
 
         </li>
 
-        <li>
+        <li {{if G.url[1]=="nav"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-list-alt"></i>
 
@@ -192,16 +192,16 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="#">
-                        <i class="icon-double-angle-right"></i>
-                        增加导航
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__ROOT_}}/admin/nav">
                         <i class="icon-double-angle-right"></i>
                         导航列表
+                    </a>
+                </li>
+                <li {{if G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__ROOT_}}/admin/nav/add">
+                        <i class="icon-double-angle-right"></i>
+                        增加导航
                     </a>
                 </li>
             </ul>
