@@ -7,6 +7,7 @@ const session = require('koa-session');
 const bodyParser = require('koa-bodyparser');
 const sd = require('silly-datetime');
 const jsonp = require('koa-jsonp');
+const cors = require('koa2-cors');
 const app = new Koa();
 
 //配置模板引擎
@@ -20,7 +21,8 @@ render(app, {
     } /*扩展模板里面的方法*/
 });
 
-app.use(jsonp())
+app.use(cors());//跨域配置
+app.use(jsonp());
 //配置静态资源中间件
 // app.use(static('.'));//不安全形式
 app.use(static(__dirname + '/public'));
@@ -52,8 +54,10 @@ router.use('/admin', admin);
 router.use('/api', api);
 router.use(index);
 
+
+//接口
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(3888);
+app.listen(80);
 console.log('项目启动');
